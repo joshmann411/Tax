@@ -1,0 +1,40 @@
+﻿@model TaxWebApp.Models.CalculatedTaxes
+@{
+    ViewBag.Title = "NewTaxOrEdit";
+}
+
+    <div class="form-body">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model => model.Id)
+        <table>
+            <tr>
+                <td>@Html.LabelFor(model => model.PoastalCode)</td>
+                <td>
+                    @Html.EditorFor(model => model.PoastalCode)<br />
+                    @Html.ValidationMessageFor(model => model.PoastalCode)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.AnnualIncome)</td>
+                <td>
+                    @Html.EditorFor(model => model.AnnualIncome)<br />
+                    @Html.ValidationMessageFor(model => model.AnnualIncome)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Submit" class="btn btn-success" />
+                    <input type="reset" value="Reset" class="btn btn-success" />
+                </td>
+            </tr>
+        </table>
+        }
+</div>
+
+
+@section scripts{
+        @Scripts.Render("~/bundles/jqueryval");
+    }

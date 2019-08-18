@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TaxWebApp.Models.CalculatedTaxes>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br/>
+
+<p>
+    <a href="@Url.Action("NewTaxOrEdit", "Tax")" class="btn btn-warning"><i class="fa fa-plus"></i> Calculate New Tax</a>
+</p>
+<table class="table table-striped">
+    <thead class="table-heading">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TaxCalculated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateStmp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PoastalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnualIncome)
+            </th>
+            <th>
+                <center>Actions</center>
+            </th>
+        </tr>
+    </thead>
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.TaxCalculated)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DateStmp)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PoastalCode)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AnnualIncome)
+    </td>
+    <td>
+        <a href="@Url.Action("NewTaxOrEdit", "Tax", new { id = item.Id })" class="btn btn-default"><i class="fa fa-pencil"></i> Edit</a>
+        <a onclick="Delete(@item.Id)" class="btn btn-default"><i class="fa fa-trash"></i> Delete</a>
+    </td>
+</tr>
+}
+
+</table>
+
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '') {
+                alertify.success(successMessage);
+            }
+        })
+
+        function Delete(id) {
+            alertify.confirm('Tax Calculator Service', 'Are you sure you want to delete this record ? ', function () {
+                window.location.href = '@Url.Action("Delete", "Tax")/' + id;
+            }, null);
+        }
+
+    </script>
+    }

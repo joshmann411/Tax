@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TaxCalculatorDBModelStoreContainer" CdmEntityContainer="TaxCalculatorDBEntities">
+    <EntitySetMapping Name="CalculatedTaxes">
+      <EntityTypeMapping TypeName="TaxCalculatorDBModel.CalculatedTax">
+        <MappingFragment StoreEntitySet="CalculatedTax">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TaxCalculated" ColumnName="TaxCalculated" />
+          <ScalarProperty Name="DateStmp" ColumnName="DateStmp" />
+          <ScalarProperty Name="PoastalCode" ColumnName="PoastalCode" />
+          <ScalarProperty Name="AnnualIncome" ColumnName="AnnualIncome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
